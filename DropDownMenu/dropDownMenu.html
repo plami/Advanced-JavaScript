@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Dropdown menu</title>
+    <style>
+        .dropdown-list li{
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+     <div id="root">
+         <div id="dropdown"></div>
+     </div>
+
+     <script>
+
+         function createDropDown(selector,items){
+             var container = document.querySelector(selector);
+             container.className += ' dropdown-list';
+             //strong selected item
+             var selectedItem = document.createElement('strong');
+             selectedItem.innerHTML = 'Fruits';
+
+             selectedItem.addEventListener('click', function(){
+                 if(itemList.style.display === 'none') {
+                     itemList.style.display = '';
+                 }
+                 else{
+                     itemList.style.display = 'none';
+                 }
+             });
+
+             //list of items
+             var itemList = document.createElement('ul');
+             itemList.style.display = 'none';
+             for (var i = 0; i < items.length; i+=1){
+                 var item = document.createElement('li');
+                 item.innerHTML = items[i];
+                 itemList.appendChild(item);
+             }
+             container.appendChild(selectedItem);
+             container.appendChild(itemList);
+         }
+         var items = ['Apples','Oranges','Bananas','Plums'];
+         createDropDown('#dropdown',items);
+
+     </script>
+</body>
+</html>
+
